@@ -1,0 +1,79 @@
+<div class='row'>
+    <div class='col-xl-1 col-lg-1 col-md-1 col-sm-1'></div>
+    <div class='col-xl-10 col-lg-10 col-md-10 col-sm-10'>
+      <h3>Know of a pet needing a home?</h3>
+    </div>
+    <div class='col-xl-1 col-lg-1 col-md-1 col-sm-1'></div>
+  </div>
+  <br>
+  <div class='row'>
+    <div class='col-xl-1 col-lg-1 col-md-1 col-sm-1'></div>
+    <div class='col-xl-10 col-lg-10 col-md-10 col-sm-10'>
+      <label for="name">Pet name:</label>
+      <input type="text" [(ngModel)]='pet.name' class='form-control' name='name' id='name' value='{{ pet.name }}'/>
+      <p *ngIf='!errors.name' style='color: red'>&nbsp;</p>
+      <div *ngIf='errors'>
+          <p *ngIf='errors.name' style='color: red'>{{ errors.name.message }}</p>
+      </div>
+      <label for="petType">Pet type:</label>
+      <input type="text" [(ngModel)]='pet.petType' class='form-control' name='petType' id='petType' value='{{ pet.petType }}'/>
+      <p *ngIf='!errors.petType' style='color: red'>&nbsp;</p>
+      <div *ngIf='errors'>
+          <p *ngIf='errors.petType' style='color: red'>{{ errors.petType.message }}</p>
+      </div>
+      <label for="description">Description:</label>
+      <input type="text" [(ngModel)]='pet.description' class='form-control' name='description' id='description' value='{{ pet.description }}'/>
+      <p *ngIf='!errors.description' style='color: red'>&nbsp;</p>
+      <div *ngIf='errors'>
+          <p *ngIf='errors.description' style='color: red'>{{ errors.description.message }}</p>
+      </div>
+      <h5>Skills:</h5>
+      <br>
+      <table>
+        <tr>
+          <td><label for="skill0">Skill 1:</label></td>
+          <td><input type="text" [(ngModel)]='skill0' class='form-control' name='skill0' id='skill0' value='{{ skill0 }}'/></td>
+        </tr>
+        <tr>
+          <td colspan='2'>
+            <p *ngIf='!errors.skills' style='color: red'>&nbsp;</p>
+            <div *ngIf='errors'>
+                <p *ngIf='errors.skills' style='color: red'>{{ errors.skills.message }}</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="skill1">Skill 2:</label></td>
+          <td><input type="text" [(ngModel)]='skill1' class='form-control' name='skill1' id='skill1' value='{{ skill1 }}'/></td>
+        </tr>
+        <tr>
+          <td colspan='2'>
+            <p *ngIf='!errors.skills' style='color: red'>&nbsp;</p>
+            <div *ngIf='errors'>
+                <p *ngIf='errors.skills' style='color: red'>{{ errors.skills.message }}</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="skill2">Skill 3:</label></td>
+          <td><input type="text" [(ngModel)]='skill2' class='form-control' name='skill2' id='skill2' value='{{ skill2 }}'/></td>
+        </tr>
+        <tr>
+          <td colspan='2'>
+            <p *ngIf='!errors.skills' style='color: red'>&nbsp;</p>
+            <div *ngIf='errors'>
+                <p *ngIf='errors.skills' style='color: red'>{{ errors.skills.message }}</p>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <br>
+    <div class='col-xl-1 col-lg-1 col-md-1 col-sm-1'></div>
+    </div>
+    <div class="row">
+      <div class='col-xl-12 col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center'>
+        <button class='btn btn-primary' (click)='onUpdatePet()'>Edit pet</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class='btn btn-info' (click)='onCancel()'>Cancel</button>
+      </div>
+</div>

@@ -1,0 +1,32 @@
+<div class='row'>
+    <div class='col-xl-1 col-lg-1 col-md-1 col-sm-1'></div>
+    <div class='col-xl-10 col-lg-10 col-md-10 col-sm-10'>
+      <br>
+      <h3>These pets are looking for a home!</h3>
+      <button class='btn btn-link' [routerLink]="['/new']">Add a pet to the shelter</button>
+      <br>
+    </div>
+    <div class='col-xl-1 col-lg-1 col-md-1 col-sm-1'></div>
+  </div>
+  <div class='row'>
+    <div class='col-xl-1 col-lg-1 col-md-1 col-sm-1'></div>
+    <div class='col-xl-10 col-lg-10 col-md-10 col-sm-10'>
+      <table class='table table-striped table-bordered table-hover'>
+        <thead>
+          <tr>
+            <th scope='col'>Name</th>
+            <th scope='col'>Type</th>
+            <th scope='col'>Actions Available</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pet of pets">
+              <td>{{ pet.name }}</td>
+              <td>{{ pet.petType }}</td>
+              <td><button class='btn btn-info' (click)="onViewPet(pet._id)">Details</button>&nbsp;&nbsp;&nbsp;&nbsp;<button class='btn btn-primary' (click)="onEdit(pet._id)">Edit</button></td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class='col-xl-1 col-lg-1 col-md-1 col-sm-1'></div>
+  </div>

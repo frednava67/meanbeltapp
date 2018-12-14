@@ -1,0 +1,58 @@
+<div class='row'>
+  <div class='col-xl-1 col-lg-1 col-md-1 col-sm-1'></div>
+  <div class='col-xl-10 col-lg-10 col-md-10 col-sm-10'>
+    <button class='btn btn-link' [routerLink]="['/']">Home</button>&nbsp;&nbsp;&nbsp;&nbsp;
+  </div>
+  <div class='col-xl-1 col-lg-1 col-md-1 col-sm-1'></div>
+</div>
+<div class='row'>
+  <div class='col-xl-1 col-lg-1 col-md-1 col-sm-1'></div>
+  <div class='col-xl-10 col-lg-10 col-md-10 col-sm-10'>
+    <h2 *ngIf="chosenPet.name!=''" >Details about {{ chosenPet.name }}</h2>
+  </div>
+  <div class='col-xl-1 col-lg-1 col-md-1 col-sm-1'></div>
+</div>
+<br>
+<div class='row'>
+  <div class='col-xl-1 col-lg-1 col-md-1 col-sm-1'></div>
+  <div class='col-xl-10 col-lg-10 col-md-10 col-sm-10'>
+    <table class='table table-borderless'>
+      <tbody>
+        <tr>
+          <td><h4>Pet type:</h4></td>
+          <td>{{ chosenPet.petType }}</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><h4>Description:</h4></td>
+            <td>{{ chosenPet.description }}</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><h4>Skills:</h4></td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr *ngFor="let skill of chosenPet.skills">
+            <td>&nbsp;</td>
+            <td *ngIf="!skill.name">&nbsp;</td>
+            <td *ngIf="skill.name">{{ skill.name }}</td>
+        </tr>
+        <tr>
+            <td><h5>Likes:</h5></td>
+            <td>{{ chosenPet.likes }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <button *ngIf="alreadyLiked=='yes'" class='btn btn-info btn-disabled' (click)="onLike(chosenPet)" disabled>Liked this pet</button>&nbsp;&nbsp;&nbsp;&nbsp;
+    <button *ngIf="alreadyLiked=='no'" class='btn btn-info' (click)="onLike(chosenPet)">Like this pet</button>&nbsp;&nbsp;&nbsp;&nbsp;
+    <button class='btn btn-primary' (click)="onAdopt(chosenPet)">Adopt this pet!</button>
+  </div>
+  <div class='col-xl-1 col-lg-1 col-md-1 col-sm-1'></div>
+</div>

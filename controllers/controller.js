@@ -1,34 +1,34 @@
-const Person = require("../models");
+const Pet = require("../models/models");
 
 module.exports = {
-    cbCreatePerson: function(req,res){
-        console.log('Inside cbCreatePerson()');
+    cbCreatePet: function(req,res){
+        console.log('Inside cbCreatePet()');
         console.log(req.body);
-        Person.create(req.body)
+        Pet.create(req.body)
             .then((data)=>res.json({message: "Success", data: data}))
             .catch((err)=>res.json({message: "Error", err: err}))            
     },
-    cbGetPersons: function(req,res){
-        Person.find({})
+    cbGetPets: function(req,res){
+        Pet.find().sort({petType: 1})
             .then((data)=>res.json({message: "Success", data: data}))
             .catch((err)=>res.json({message: "Error", err: err}))            
     },
-    cbGetPerson: function(req,res){
-        Person.findById({_id: req.params.id})
+    cbGetPet: function(req,res){
+        Pet.findById({_id: req.params.id})
             .then((data)=>res.json({message: "Success", data: data}))
             .catch((err)=>res.json({message: "Error", err: err}))            
     },
-    cbUpdatePerson: function(req,res){
-        console.log('Inside cbUpdatePerson()');
+    cbUpdatePet: function(req,res){
+        console.log('Inside cbUpdatePet()');
         console.log(req.body);
-        Person.findByIdAndUpdate({ _id: req.params.id }, req.body)
+        Pet.findOneAndUpdate({ _id: req.params.id }, req.body, {runValidators: true, context: 'query' })
             .then((data)=>res.json({message: "Success", data: data}))
             .catch((err)=>res.json({message: "Error", err: err}))            
     },
-    cbRemovePerson: function(req,res){
-        console.log('Inside cbRemovePerson()');
+    cbRemovePet: function(req,res){
+        console.log('Inside cbRemovePet()');
         console.log(req.params.id);
-        Person.findByIdAndRemove(req.params.id)
+        Pet.findByIdAndRemove(req.params.id)
             .then((data)=>res.json({message: "Success", data: data}))
             .catch((err)=>res.json({message: "Error", err: err}))            
     }
